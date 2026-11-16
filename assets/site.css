@@ -1,0 +1,116 @@
+/*
+  トップとアプリのページの見た目（Bootstrap 5.3 の上に重ねる）。規約のページは各ページの中のスタイルのまま
+  サイトは無彩色で飾らず、色はゲームの絵だけに持たせる
+*/
+
+/* 今の言語でないほうの文を隠す（assets/site.js が html の lang を切り替える） */
+html[lang="ja"] [data-lang="en"],
+html[lang="en"] [data-lang="ja"] { display: none !important; }
+
+:root, [data-bs-theme="light"] {
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #141414;
+  --bs-secondary-color: #6b6b6b;
+  --bs-border-color: #e6e6e6;
+  --bs-link-color-rgb: 20, 20, 20;
+  --bs-link-hover-color-rgb: 20, 20, 20;
+  --soft: #f4f4f2;
+  --bs-font-sans-serif: "Noto Sans JP", system-ui, -apple-system, "Hiragino Sans", sans-serif;
+}
+[data-bs-theme="dark"] {
+  --bs-body-bg: #0e0e0f;
+  --bs-body-color: #ededed;
+  --bs-secondary-color: #9a9a9a;
+  --bs-border-color: #262628;
+  --bs-link-color-rgb: 237, 237, 237;
+  --bs-link-hover-color-rgb: 237, 237, 237;
+  --soft: #18181a;
+}
+
+body { line-height: 1.8; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-weight: 700; letter-spacing: -.01em; }
+img, video { max-width: 100%; height: auto; }
+a { text-underline-offset: .2em; }
+.muted { color: var(--bs-secondary-color); }
+
+/* ヘッダー */
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 28px; padding-bottom: 28px; }
+.wordmark { font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; text-decoration: none; color: inherit; }
+.topbar nav { display: flex; align-items: center; gap: 20px; font-size: .9rem; }
+.topbar nav a { text-decoration: none; color: var(--bs-secondary-color); }
+.topbar nav a:hover { color: var(--bs-body-color); }
+.lang-select { width: auto; font-size: .85rem; padding: .2rem 1.9rem .2rem .6rem; border-radius: 8px; background-color: transparent; }
+
+/* トップ（ヘッダーのすぐ下からゲームを並べる） */
+#games .game:first-child { border-top: 0; padding-top: 16px; }
+
+.game { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px; align-items: center; padding: 48px 0; border-top: 1px solid var(--bs-border-color); }
+.game-art { display: block; border-radius: 16px; overflow: hidden; background: var(--soft); }
+.game-art img { display: block; width: 100%; aspect-ratio: 1024 / 500; object-fit: cover; transition: transform .4s ease; }
+.game-art:hover img { transform: scale(1.02); }
+.title-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.app-icon { flex: none; border-radius: 22.5%; box-shadow: 0 0 0 1px rgba(0, 0, 0, .06); }
+.game .app-icon { width: 64px; height: 64px; }
+.game h2 { font-size: 1.6rem; margin: 0; line-height: 1.3; }
+.game h2 a { color: inherit; text-decoration: none; }
+.tagline { margin: 0; color: var(--bs-secondary-color); }
+.blurb { margin: 0 0 20px; }
+
+.stores { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn-store {
+  display: inline-flex; align-items: center; gap: .55rem; padding: .45rem 1rem .45rem .85rem; border-radius: 10px;
+  background: #000; color: #fff; border: 1px solid #000; text-align: left; line-height: 1.1; white-space: nowrap; text-decoration: none;
+}
+.btn-store:hover { background: #262626; color: #fff; }
+.btn-store i { font-size: 1.45rem; }
+.btn-store small { display: block; font-size: .62rem; opacity: .85; }
+.btn-store span { display: block; font-size: 1rem; font-weight: 700; }
+[data-bs-theme="dark"] .btn-store { background: #fff; color: #000; border-color: #fff; }
+[data-bs-theme="dark"] .btn-store:hover { background: #e2e2e2; color: #000; }
+
+.links { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: .85rem; }
+.links a { color: var(--bs-secondary-color); }
+.links a:hover { color: var(--bs-body-color); }
+.links .more { color: var(--bs-body-color); font-weight: 700; text-decoration: none; }
+
+.block { padding: 56px 0; border-top: 1px solid var(--bs-border-color); }
+.block h2 { font-size: .9rem; margin-bottom: 12px; color: var(--bs-secondary-color); }
+.block p { margin: 0; }
+
+.site-footer { padding: 40px 0 56px; border-top: 1px solid var(--bs-border-color); color: var(--bs-secondary-color); font-size: .85rem; }
+.site-footer a { color: inherit; }
+
+/* アプリのページ */
+.back { display: inline-block; margin: 8px 0 24px; font-size: .9rem; color: var(--bs-secondary-color); text-decoration: none; }
+.back:hover { color: var(--bs-body-color); }
+.app-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+.app-head .title-row { margin: 0; }
+.app-head .app-icon { width: 88px; height: 88px; }
+.app-head h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin: 0; line-height: 1.25; }
+.pv, .hero-art { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; background: #000; }
+.hero-art { aspect-ratio: 1024 / 500; object-fit: cover; }
+.lead-text { font-size: 1.15rem; max-width: 40em; margin: 40px 0 0; }
+
+.section-label { font-size: .9rem; margin: 0 0 24px; color: var(--bs-secondary-color); }
+.shots { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; }
+.shots img { flex: none; width: 200px; aspect-ratio: 420 / 913; object-fit: cover; border-radius: 14px; scroll-snap-align: start; background: var(--soft); }
+
+.features { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px 40px; }
+.features h3 { font-size: 1rem; margin: 0 0 4px; }
+.features p { margin: 0; color: var(--bs-secondary-color); font-size: .95rem; }
+
+.plain-list { list-style: none; padding: 0; margin: 0; }
+.plain-list li { padding: 10px 0; border-bottom: 1px solid var(--bs-border-color); }
+.plain-list li:first-child { border-top: 1px solid var(--bs-border-color); }
+
+@media (max-width: 767.98px) {
+  .topbar { padding-top: 18px; padding-bottom: 18px; }
+  .topbar nav .hide-sm { display: none; }
+  .game { grid-template-columns: 1fr; gap: 20px; padding: 32px 0; }
+  .game .app-icon { width: 56px; height: 56px; }
+  .game h2 { font-size: 1.35rem; }
+  .btn-store { flex: 1 1 auto; justify-content: center; }
+  .app-head .app-icon { width: 72px; height: 72px; }
+  .shots img { width: 160px; }
+  .block { padding: 40px 0; }
+}
