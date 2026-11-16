@@ -31,9 +31,8 @@
 <script>
   (function () {
     var src = (new URLSearchParams(location.search).get('src') || 'web').replace(/[^\w-]/g, '').slice(0, 40) || 'web';
-    // App Store の計測は、App Store Connect のキャンペーンのリンクにある pt（プロバイダのトークン）も要る。わかったらここに入れる
-    var PT = '';
-    var ios = 'https://apps.apple.com/jp/app/id6830233883?ct=' + src + (PT ? '&pt=' + PT : '');
+    // App Store の計測（App Store Connect の「キャンペーン」）。pt はプロバイダのトークン
+    var ios = 'https://apps.apple.com/app/apple-store/id6830233883?pt=121505058&ct=' + src + '&mt=8';
     var android = 'https://play.google.com/store/apps/details?id=com.sakitohorie.yochipen&referrer=' +
       encodeURIComponent('utm_source=' + src + '&utm_medium=social&utm_campaign=' + src);
     document.getElementById('ios').href = ios;
