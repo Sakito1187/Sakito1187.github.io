@@ -6,15 +6,20 @@
   <meta name="description" content="iOS・Androidアプリ「よちぺん」の資金決済法に基づく表示（有償ジェム）。">
   <title>資金決済法に基づく表示 | よちぺん</title>
   <style>
-    :root { color-scheme: light; font-family: system-ui, -apple-system, "Noto Sans JP", sans-serif; color: #243047; background: #f5f7fb; }
+    /* 色はトップ（assets/site.css）とそろえ、端末のダークモードにあわせる */
+    :root { color-scheme: light dark; --bg: #f4f4f2; --surface: #ffffff; --text: #141414; --muted: #6b6b6b; --line: #e6e6e6; --th: #3a3a3a;
+      font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; color: var(--text); background: var(--bg); }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #0e0e0f; --surface: #18181a; --text: #ededed; --muted: #9a9a9a; --line: #2c2c2f; --th: #d0d0d0; }
+    }
     body { margin: 0; line-height: 1.85; }
-    main { max-width: 780px; margin: 32px auto; padding: 32px; background: white; border-radius: 16px; }
+    main { max-width: 780px; margin: 32px auto; padding: 32px; background: var(--surface); border-radius: 16px; }
     h1 { font-size: clamp(1.5rem, 5vw, 2rem); line-height: 1.4; }
-    a { color: #1559a6; overflow-wrap: anywhere; }
-    .meta { color: #596579; font-size: .9rem; }
+    a { color: inherit; overflow-wrap: anywhere; text-underline-offset: .2em; }
+    .meta { color: var(--muted); font-size: .9rem; }
     table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
-    th, td { text-align: left; vertical-align: top; padding: 12px; border-bottom: 1px solid #dce2ec; }
-    th { width: 32%; font-weight: 600; color: #3a4760; }
+    th, td { text-align: left; vertical-align: top; padding: 12px; border-bottom: 1px solid var(--line); }
+    th { width: 32%; font-weight: 600; color: var(--th); }
     ul { margin: 0; padding-left: 1.2rem; }
     @media (max-width: 600px) { main { margin: 0; padding: 24px 20px; border-radius: 0; } th, td { display: block; width: auto; padding: 8px 0; } th { border-bottom: 0; padding-top: 16px; } }
   </style>

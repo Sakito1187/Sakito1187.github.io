@@ -39,7 +39,12 @@ a { text-underline-offset: .2em; }
 .topbar nav { display: flex; align-items: center; gap: 20px; font-size: .9rem; }
 .topbar nav a { text-decoration: none; color: var(--bs-secondary-color); }
 .topbar nav a:hover { color: var(--bs-body-color); }
-.lang-select { width: auto; font-size: .85rem; padding: .2rem 1.9rem .2rem .6rem; border-radius: 8px; background-color: transparent; }
+.lang-select {
+  width: auto; font-size: .85rem; padding: .2rem 1.9rem .2rem .6rem; border-radius: 8px;
+  background-color: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);
+}
+/* 開いたときの一覧も、背景と文字の色をはっきり指定する（透明だと Windows で白地に白字になる） */
+.lang-select option { background-color: var(--bs-body-bg); color: var(--bs-body-color); }
 
 /* トップ（ヘッダーのすぐ下からゲームを並べる） */
 #games .game:first-child { border-top: 0; padding-top: 16px; }
